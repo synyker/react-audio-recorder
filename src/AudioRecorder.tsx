@@ -41,7 +41,8 @@ export default class AudioRecorder extends React.Component<AudioRecorderProps, A
   state: AudioRecorderState = {
     isRecording: false,
     isPlaying: false,
-    audioData: this.props.initialAudio
+    audioData: this.props.initialAudio,
+    api: this.props.api
   };
 
   static defaultProps = {
@@ -92,6 +93,8 @@ export default class AudioRecorder extends React.Component<AudioRecorderProps, A
   stopRecording() {
     this.waveInterface.stopRecording();
 
+    console.log(this.state.api);
+    
     this.setState({
       isRecording: false,
       audioData: this.waveInterface.audioData
